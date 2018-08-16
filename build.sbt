@@ -1,6 +1,6 @@
 enablePlugins(ScalaJSPlugin, BuildInfoPlugin)
 
-name := "my_app"
+name := "posTagger"
 
 version := "0.0.1"
 
@@ -23,6 +23,8 @@ libraryDependencies ++= Seq(
   "com.thoughtworks.binding" %%% "dom" % "latest.version"
 )
 
+
+
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 
 //scalacOptions += "-P:scalajs:suppressExportDeprecations"
@@ -30,10 +32,9 @@ addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.fu
 scalacOptions += "-unchecked"
 scalacOptions += "-deprecation"
 
-lazy val spa = taskKey[Unit]("Assemble single-page app from html templates and generated CSS and JS output")
 
 import scala.io.Source
 import java.io.PrintWriter
 
 buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
-buildInfoPackage := "my_app"
+buildInfoPackage := "posTagger"
