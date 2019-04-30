@@ -13,6 +13,7 @@ import org.scalajs.dom.raw.Event
 import org.scalajs.dom.ext.Ajax
 import edu.holycross.shot.cite._
 import edu.holycross.shot.ohco2._
+import edu.holycross.shot.greek._
 import edu.holycross.shot.citeobj._
 import scala.scalajs.js.annotation.JSExport
 import js.annotation._
@@ -32,6 +33,34 @@ object MainView {
 				<p> { MainModel.userMessage.bind }  </p>
 			</div>
 	}
+
+	@dom
+	def typingDiv = {
+		val greekKeyUpHandler = { event: KeyboardEvent =>
+			(event.currentTarget, event.keyCode) match {
+				case(input: HTMLTextAreaElement, _) =>  {
+					//O2Controller.validateUrn(s"${input.value.toString}")
+					g.console.log(s"${input.value.toString}")
+					g.console.log(s"${MainController.greekify(input.value.toString)}")	
+					js.Dynamic.global.document.getElementById("greekOutput").innerHTML = MainController.greekify(input.value.toString)
+				}
+				case _ =>
+			}
+		}
+
+		<textarea
+		class={ s"greekInputField" }
+		id="greekInput"
+		cols={ 40 }
+		rows={ 5 }
+		value=""
+		onkeyup={ greekKeyUpHandler }>
+		</textarea>	
+
+		<div id="greekOutput"></div>
+
+	}
+
 
 	@dom
 	def mainDiv = {
@@ -58,6 +87,10 @@ object MainView {
 			{ mainMessageDiv.bind }
 
 			{ bigDisplay.bind }
+
+			<!-- 
+			{ typingDiv.bind }
+			-->
 
 		</article>
 		 <div class="push"></div>
@@ -416,10 +449,11 @@ object MainView {
 	}
 
 
+
 	@dom
 	def footer = {
 		<p>
-		POSTagger(Greek) was written in 2018 by Christopher Blackwell and licensed CC0 (Public Domain).
+		POSTagger(Greek) was written in 2018 by Christopher Blackwell and licensed CC0 (Public Domain). Source and issue-tracker at <a href="https://github.com/Eumaeus/pos-tagger">https://github.com/Eumaeus/pos-tagger</a>. 
 		</p>
 	}
 

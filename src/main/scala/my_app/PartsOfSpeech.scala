@@ -32,8 +32,8 @@ case class PartOfSpeech(
 	person:Option[PosElement],
 	number:Option[PosElement],
 	tense:Option[PosElement],
-	voice:Option[PosElement],
 	mood:Option[PosElement],
+	voice:Option[PosElement],
 	gender:Option[PosElement],
 	grammaticalcase:Option[PosElement],
 	degree:Option[PosElement]
@@ -98,7 +98,7 @@ case class PartOfSpeech(
 				case None => "-"
 			}
 		}
-		s"${posStr}${personStr}${numberStr}${tenseStr}${voiceStr}${moodStr}${genderStr}${grammaticalcaseStr}${degreeStr}"
+		s"${posStr}${personStr}${numberStr}${tenseStr}${moodStr}${voiceStr}${genderStr}${grammaticalcaseStr}${degreeStr}"
 	}
 
 	def toLabel:String = {
@@ -156,7 +156,7 @@ case class PartOfSpeech(
 				case None => ""
 			}
 		}
-		val commaString:String = s"Part of Speech: ${posStr}${personStr}${numberStr}${tenseStr}${voiceStr}${moodStr}${genderStr}${grammaticalcaseStr}${degreeStr}"
+		val commaString:String = s"Part of Speech: ${posStr}${personStr}${numberStr}${tenseStr}${moodStr}${voiceStr}${genderStr}${grammaticalcaseStr}${degreeStr}"
 
 		commaString.takeRight(2) match {
 			case ", " => commaString.dropRight(2)
@@ -172,8 +172,8 @@ val posSchema:Vector[Map[String,String]] = Vector(
 	Map("short" -> "pers", "long" -> "Person"),
 	Map("short" -> "num", "long" -> "Number"),
 	Map("short" -> "tense", "long" -> "Tense"),
-	Map("short" -> "mood", "long" -> "Mood"),
 	Map("short" -> "voice", "long" -> "Voice"),
+	Map("short" -> "mood", "long" -> "Mood"),
 	Map("short" -> "gend", "long" -> "Gender"),
 	Map("short" -> "case", "long" -> "Case"),
 	Map("short" -> "degree", "long" -> "Degree")
@@ -187,7 +187,7 @@ val partsOfSpeech:Vector[Map[String,String]] = Vector(
 	Map("short" -> "pron", "long" -> "Pronoun", "tag" -> "p"),
 	Map("short" -> "verb", "long" -> "Verb", "tag" -> "v"),
 	Map("short" -> "adv", "long" -> "Adverb", "tag" -> "d"),
-	Map("short" -> "prep", "long" -> "Proposition", "tag" -> "r"),
+	Map("short" -> "prep", "long" -> "Preposition", "tag" -> "r"),
 	Map("short" -> "conj", "long" -> "Conjunction", "tag" -> "c"),
 	Map("short" -> "int", "long" -> "Interjection", "tag" -> "i"),
 	Map("short" -> "punct", "long" -> "Punctuation", "tag" -> "u"),

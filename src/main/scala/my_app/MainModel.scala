@@ -191,8 +191,8 @@ object MainModel {
 							currentPos.value.person,
 							currentPos.value.number,
 							currentPos.value.tense,
-							currentPos.value.voice,
 							currentPos.value.mood,
+							currentPos.value.voice,
 							currentPos.value.gender,
 							currentPos.value.grammaticalcase,
 							currentPos.value.degree
@@ -211,8 +211,8 @@ object MainModel {
 							initBoundGenders()
 							initBoundNumbers()
 							initBoundPersons()
-							allBoundMoods()
 							initBoundTenses()
+							allBoundMoods()
 							initBoundVoices()
 							initBoundDegrees()
 						}
@@ -310,8 +310,8 @@ object MainModel {
 							None,
 							None,
 							currentPos.value.tense,
-							currentPos.value.voice,
 							None,
+							currentPos.value.voice,
 							currentPos.value.gender,
 							currentPos.value.grammaticalcase,
 							currentPos.value.degree
@@ -323,8 +323,8 @@ object MainModel {
 							currentPos.value.person,
 							currentPos.value.number,
 							currentPos.value.tense,
-							currentPos.value.voice,
 							Some(newMoodEl),
+							currentPos.value.voice,
 							currentPos.value.gender,
 							currentPos.value.grammaticalcase,
 							currentPos.value.degree

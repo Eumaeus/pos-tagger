@@ -17,6 +17,8 @@ import edu.holycross.shot.scm._
 import edu.holycross.shot.ohco2._
 import edu.holycross.shot.citeobj._
 
+import edu.holycross.shot.greek._
+
 import monix.execution.Scheduler.Implicits.global
 import monix.eval._
 
@@ -78,6 +80,37 @@ object MainController {
 		MainModel.msgTimer = js.timers.setTimeout(10000){ MainModel.userMessageVisibility.value = "app_hidden" }
 	}
 
+	def greekify(s:String):String = {
+		if (s.size > 0){
+			val gs:LiteraryGreekString = LiteraryGreekString(s)
+			val ugs:String = ucodePlus(gs)
+			ugs
+		} else {
+			""
+		}
+	}
+
+	def ucodePlus(s:LiteraryGreekString):String = {
+		val sigmaTerminators:Vector[String] = Vector(",",".",":", ";", "'", "—", " ", "\t")
+		val punctuationMatcher = "[.,:;]".r
+		val uc1:String = s.ucode.replaceAll(":","·")
+		val uc2:String = {
+			if (uc1.last == 'σ') {
+				s"ς${uc1.reverse.tail}".reverse
+			} else { uc1 }
+		}
+		val matcher = "σ.".r	
+		val uc3 = {
+			matcher.replaceAllIn(uc2, m => {
+				val secondChar:String = m.group(0).tail
+				if (sigmaTerminators.contains(secondChar)) { s"ς${secondChar}"}
+				else { s"σ${secondChar}"}
+			})
+		}
+
+		uc3
+
+	}
 
 
 }

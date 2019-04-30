@@ -2,7 +2,7 @@ enablePlugins(ScalaJSPlugin, BuildInfoPlugin)
 
 name := "posTagger"
 
-version := "0.0.1"
+version := "2.0.0"
 
 scalaVersion := "2.12.4"
 
@@ -17,6 +17,7 @@ libraryDependencies ++= Seq(
   "edu.holycross.shot.cite" %%% "xcite" % "3.3.0",
   "edu.holycross.shot" %%% "ohco2" % "10.8.1",
   "edu.holycross.shot" %%% "scm" % "6.1.0",
+  "edu.holycross.shot" %%% "greek" % "1.4.0",
   "edu.holycross.shot" %%% "citeobj" % "7.0.1",
   "edu.holycross.shot" %%% "citerelations" % "2.2.0",
   "edu.holycross.shot" %%% "citebinaryimage" % "1.1.2",
